@@ -1,0 +1,132 @@
+﻿@model Assignment9.Controllers.TeamBase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <p>
+        @Html.ActionLink("Create New Player", "CreatePlayer") |
+        @Html.ActionLink("Create New Coach", "CreateCoach") |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.League)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.League)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Games)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Games)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RBI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RBI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrikeOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrikeOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BattingAvg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BattingAvg)
+        </dd>
+
+
+    </dl>
+    <hr />
+
+    <h4>Coach Roster</h4>
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Jersey #</th>
+            <th>Position</th>
+        </tr>
+
+        @foreach(var coach in Model.Coaches.OrderBy(p => p.Position).ThenBy(n => n.Name))
+        {
+            <tr>
+                <td>
+                    @coach.Name
+                </td>
+                <td>
+                    @coach.Number
+                </td>
+                <td>
+                    @coach.Position
+                </td>
+            </tr>
+        }
+    </table>
+        
+    <hr />
+
+    <h4>Player Roster</h4>
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Jersey</th>
+            <th>Position</th>
+        </tr>
+        @foreach (var player in Model.Players.OrderBy(p => p.Position).ThenBy(n => n.Name))
+        {
+            <tr>
+                <td>
+                    @player.Name
+                </td>
+                <td>
+                    @player.Number
+                </td>
+                <td>
+                    @player.Position
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Create New Player", "CreatePlayer") |
+    @Html.ActionLink("Create New Coach", "CreateCoach") | 
+    @Html.ActionLink("Back to List", "Index")
+</p>
